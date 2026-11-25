@@ -1,0 +1,29 @@
+{
+  "name": "ethdevnews-river",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The ethdevnews river: an automated feed of Ethereum developer news from primary sources",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply river --local",
+    "db:migrate": "wrangler d1 migrations apply river --remote",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethdevnews/ethdevnews-river.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261123.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1",
+    "wrangler": "^4.168.0"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.12.1"
+  }
+}

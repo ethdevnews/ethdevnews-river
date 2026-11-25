@@ -1,0 +1,27 @@
+name = "ethdevnews-river"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Served at feed.ethdevnews.com. Requires the ethdevnews.com zone on the same Cloudflare account.
+routes = [{ pattern = "feed.ethdevnews.com", custom_domain = true }]
+
+[vars]
+SITE_URL = "https://feed.ethdevnews.com"
+SITE_NAME = "ethdevnews river"
+TIME_ZONE = "Australia/Melbourne"
+SOURCES_PER_RUN = "10"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "river"
+# Set after `wrangler d1 create river` (see README).
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[triggers]
+# Every 10 minutes; each run fetches the sources that are due (each source has its own interval).
+crons = ["*/10 * * * *"]
+
+[observability]
+enabled = true
