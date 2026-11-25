@@ -96,19 +96,21 @@ curl -X POST localhost:8787/api/admin/run -H 'authorization: Bearer local-admin'
 
 ## Deploy
 
-One-off setup, with a Cloudflare API token that can edit Workers, D1 and the `ethdevnews.com` zone's DNS:
+Cloudflare builds and deploys the Worker itself on every push to `main` (Workers Builds). No API token or GitHub secret is needed.
+
+One-off setup in the Cloudflare dashboard:
+
+1. **Storage & Databases → D1 → Create database**, named `river`. Copy its database ID into `database_id` in `wrangler.toml` and merge that change.
+2. **Workers & Pages → Create → Import a repository**, pick `ethdevnews/ethdevnews-river` (install the Cloudflare GitHub app on the ethdevnews org if asked). Project name `ethdevnews-river`, production branch `main`, build command empty, deploy command `npm run deploy`.
+3. After the first deploy, in the Worker's **Settings → Variables and Secrets**, add a secret `ADMIN_TOKEN` (any long random string). Optionally add `GITHUB_TOKEN` (read-only) for EIP pull request titles.
+
+`npm run deploy` applies any new D1 migrations and then deploys. `wrangler.toml` carries everything else: the cron, the D1 binding, and the `river.ethdevnews.com` custom domain, which Cloudflare attaches on deploy because `ethdevnews.com` is on the same account.
+
+To fill the river straight away instead of waiting for the cron:
 
 ```sh
-export CLOUDFLARE_API_TOKEN=...
-npx wrangler d1 create river          # put the printed database_id in wrangler.toml
-npm run db:migrate                    # create the tables
-npx wrangler secret put ADMIN_TOKEN   # any long random string
-npx wrangler secret put GITHUB_TOKEN  # optional: read-only token, for EIP PR titles
-npm run deploy                        # also attaches river.ethdevnews.com
 curl -X POST https://river.ethdevnews.com/api/admin/run -H "authorization: Bearer $ADMIN_TOKEN" -d '{"all":true}'
 ```
-
-After that, pushes to `main` deploy through GitHub Actions if the repository has `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
 
 ## Later
 

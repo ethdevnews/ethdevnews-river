@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler d1 migrations apply river --remote && wrangler deploy",
     "db:migrate:local": "wrangler d1 migrations apply river --local",
     "db:migrate": "wrangler d1 migrations apply river --remote",
     "typecheck": "tsc --noEmit",

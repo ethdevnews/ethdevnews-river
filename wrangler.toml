@@ -15,7 +15,7 @@ SOURCES_PER_RUN = "10"
 [[d1_databases]]
 binding = "DB"
 database_name = "river"
-# Set after `wrangler d1 create river` (see README).
+# The id of the D1 database named "river" (create it in the Cloudflare dashboard, see README).
 database_id = "00000000-0000-0000-0000-000000000000"
 migrations_dir = "migrations"
 
