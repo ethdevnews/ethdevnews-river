@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:https://github.com/ethereum/go-ethereum/releases</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ethereum/go-ethereum/releases"/>
+  <title>Release notes from go-ethereum</title>
+  <updated>2026-11-20T10:00:00Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Repository/15452919/v1.17.2</id>
+    <updated>2026-11-20T10:00:00Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ethereum/go-ethereum/releases/tag/v1.17.2"/>
+    <title>Bubbletea (v1.17.2)</title>
+    <content type="html">&lt;p&gt;This release enables Glamsterdam on Hoodi. See &lt;a href="https://blog.ethereum.org/2026/11/20/hoodi-glamsterdam"&gt;the announcement&lt;/a&gt;.&lt;/p&gt;</content>
+    <author><name>fjl</name></author>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/15452919/v1.17.3-rc1</id>
+    <updated>2026-11-21T10:00:00Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ethereum/go-ethereum/releases/tag/v1.17.3-rc1"/>
+    <title>v1.17.3-rc1</title>
+    <content type="html">rc</content>
+  </entry>
+</feed>
