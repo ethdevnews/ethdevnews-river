@@ -1,4 +1,4 @@
-export const USER_AGENT = 'ethdevnews-river/0.1 (+https://feed.ethdevnews.com/about)';
+export const USER_AGENT = 'ethdevnews-river/0.1 (+https://river.ethdevnews.com/about)';
 
 export class HttpError extends Error {
   constructor(

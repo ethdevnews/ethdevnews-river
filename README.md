@@ -2,7 +2,7 @@
 
 A running feed of Ethereum developer news, inspired by Techmeme's river. It collects items around the clock from **primary sources only**, groups related items into stories, and serves them as a web page, RSS, JSON Feed and an API. Nobody edits it. The [ethdevnews](https://ethdevnews.com) weekly issue will be written from it.
 
-Live at **https://feed.ethdevnews.com** (once deployed).
+Live at **https://river.ethdevnews.com** (once deployed).
 
 It's a single Cloudflare Worker with a D1 database and a cron trigger. No model is used yet: every item shows the source's own title.
 
@@ -46,7 +46,7 @@ Items are grouped into stories by, strongest first: core devs call (`call:acde:2
 Bots add individual items with `POST /api/submit`:
 
 ```sh
-curl -X POST https://feed.ethdevnews.com/api/submit \
+curl -X POST https://river.ethdevnews.com/api/submit \
   -H "authorization: Bearer $BOT_TOKEN" \
   -H "content-type: application/json" \
   -d '{"url": "https://x.com/VitalikButerin/status/123", "section": "research", "note": "why it matters", "evidence_url": "optional primary source"}'
@@ -104,8 +104,8 @@ npx wrangler d1 create river          # put the printed database_id in wrangler.
 npm run db:migrate                    # create the tables
 npx wrangler secret put ADMIN_TOKEN   # any long random string
 npx wrangler secret put GITHUB_TOKEN  # optional: read-only token, for EIP PR titles
-npm run deploy                        # also attaches feed.ethdevnews.com
-curl -X POST https://feed.ethdevnews.com/api/admin/run -H "authorization: Bearer $ADMIN_TOKEN" -d '{"all":true}'
+npm run deploy                        # also attaches river.ethdevnews.com
+curl -X POST https://river.ethdevnews.com/api/admin/run -H "authorization: Bearer $ADMIN_TOKEN" -d '{"all":true}'
 ```
 
 After that, pushes to `main` deploy through GitHub Actions if the repository has `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.

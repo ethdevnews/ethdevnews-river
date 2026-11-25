@@ -3,11 +3,11 @@ main = "src/index.ts"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Served at feed.ethdevnews.com. Requires the ethdevnews.com zone on the same Cloudflare account.
-routes = [{ pattern = "feed.ethdevnews.com", custom_domain = true }]
+# Served at river.ethdevnews.com. Requires the ethdevnews.com zone on the same Cloudflare account.
+routes = [{ pattern = "river.ethdevnews.com", custom_domain = true }]
 
 [vars]
-SITE_URL = "https://feed.ethdevnews.com"
+SITE_URL = "https://river.ethdevnews.com"
 SITE_NAME = "ethdevnews river"
 TIME_ZONE = "Australia/Melbourne"
 SOURCES_PER_RUN = "10"
